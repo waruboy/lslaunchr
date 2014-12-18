@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  email: MyString
-  referral_code: MyString
-  referrer_id: 1
+  email: test1@example.com
+  referral_code: owowo
+  referrer_id: nil
 
 two:
-  email: MyString
-  referral_code: MyString
+  email: test2@example.com
+  referral_code: awawa
   referrer_id: 1

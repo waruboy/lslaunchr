@@ -26,6 +26,10 @@ group :development do
   gem 'pry'
 end
 
+group :test do
+  gem 'sqlite3'
+end
+
 gem 'delayed_job_active_record'
 
 gem 'unicorn'

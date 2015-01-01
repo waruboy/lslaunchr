@@ -4,8 +4,10 @@ one:
   email: test1@example.com
   referral_code: owowo
   referrer_id: nil
+  ref_count: 1
 
 two:
   email: test2@example.com
   referral_code: awawa
   referrer_id: 1
+  ref_count: 0

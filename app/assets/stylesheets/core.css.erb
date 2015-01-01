@@ -1,0 +1,467 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require reset
+ *= require_self
+ */
+
+
+* { box-sizing: border-box; }
+*:before, *:after { box-sizing: border-box; }
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+
+@font-face {
+	font-family: 'Moderne Sans';
+	src: url(<%= asset_path('modernesans.woff') %>) format('woff'), /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+		 url(<%= asset_path('modernesans.ttf') %>) format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3?5 */
+}
+
+
+/* Home */
+
+html.home{
+	font-family: 'Moderne Sans', sans-serif;
+	background: #ffffff url(home/home-bg.jpg) no-repeat center top; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #444444;
+}
+
+
+#home .hero{
+	width: 100%;
+	height: 440px;
+}
+
+#home .hero p{
+	width: 100%;
+	background: #00a8ff;
+	color: #ffffff;
+	text-align: center;
+	font-size: 30px;
+	padding: 12px 0;
+	letter-spacing: -1px;
+	border-radius: 0 0 25px 25px;
+	-webkit-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	   -moz-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	        box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+}
+
+#home .form-wrap{
+	width: 500px;
+	height: 190px;
+	border-radius: 30px;
+	padding: 20px 30px;
+	background-color: rgba(255, 255, 255, 0.6);
+	letter-spacing: -2px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+#home .form-wrap .key{
+	width: 75px;
+	height: 35px;
+	margin: 0 auto;
+	background: url(<%= asset_path('home/key1.png') %>) 0 0 no-repeat;
+	background-size: 75px;
+}
+
+
+#home .form-wrap .byline{
+	color: #000000;
+	font-size: 33px;
+	text-align: center;
+	margin: 10px 0 15px 0;
+}
+
+#home .form-wrap .email{
+	width: 325px;
+	padding: 12px 50px 12px 25px;
+	font-size: 20px;
+	border: 0;
+	border-radius: 30px 0 0 30px;
+	-webkit-writing-mode: horizontal-tb;
+}
+#home .form-wrap .email:focus {
+	outline: 0;
+}
+
+#home .form-wrap .submit{
+	margin-left: -50px;
+	padding: 12px 16px;
+	font-size: 20px;
+	background: #00a8ff;
+	color: #ffffff;
+	cursor: pointer;
+	white-space: pre;
+	border: 0;
+	border-radius: 30px;
+	align-items: flex-start;
+	-webkit-appearance: button;
+	-webkit-user-select: none;
+	-webkit-writing-mode: horizontal-tb;
+}
+
+#home .form-wrap .submit:hover{    
+	background: #069fee;
+}
+#home .form-wrap .submit:active, #home .form-wrap .submit:focus{  
+	background: #0599e6;
+	outline: 0;  
+}
+
+
+/* Refer a friend page */
+
+html.refer{
+	font-family: 'Moderne Sans', sans-serif;
+	background: url("refer-bg.png") repeat-x scroll 0 -275px #ffffff;
+	color: #444444;
+}
+
+#refer .header{
+	width: 100%;
+	min-width: 1024px;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#refer .header .content{
+	background: #009bdb;
+	color: #ffffff;
+	font-size: 24px;
+	text-transform: uppercase;
+	padding: 7px 0;
+	border-radius: 0 0 25px 25px;
+	-webkit-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	   -moz-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	        box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+}
+
+#refer .page-content{
+	width: 1024px;
+	margin: 0 auto;
+	z-index: 0;
+	position: relative;
+	padding-top: 20px;
+}
+
+
+#refer .hero{
+	height: 391px;
+	min-width: 1024px;
+	overflow: hidden;
+}
+
+#refer .share-wrap{
+	float: left;
+	width: 400px;
+	text-align: center;
+	margin-right: 30px;
+	background: #ffffff;
+	border-radius: 30px;
+	padding: 10px 15px 30px 15px;
+}
+
+#refer .share-wrap .why{
+	font-size: 20px;
+}
+
+#refer .share-wrap .title{
+	font-size: 24px;
+	line-height: 32px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 28px;
+}
+
+#refer .share-wrap .subtitle{
+	font-size: 16px;
+	margin-top: 28px;
+}
+
+
+#refer .share-wrap .unique-code{
+	width: 280px;
+	margin: 32px auto;
+	display: block;
+	padding: 7px 0;
+	background: #009bdb;
+	color: #ffffff;
+	font-size: 16px;
+	text-decoration: none;
+	border-radius: 20px;
+}
+
+#refer .share-wrap .social-links{
+	height: 35px;
+	margin: 25px auto 0 auto;
+	text-align: center;
+}
+
+#refer .share-wrap .social-links a{
+	display: inline-block;
+	text-decoration: none;
+	padding: 7px 12px;
+}
+
+#refer .share-wrap .social-links a.fb{
+	margin-right: 20px;
+	background: url(/assets/refer/fb.png);
+	background-size: 32px 32px;
+	width: 32px;
+	height: 32px;
+}
+
+#refer .share-wrap .social-links a.twit{
+	margin-right: 20px;
+	background: url(/assets/refer/twit.png);
+	background-size: 32px 32px;
+	width: 32px;
+	height: 32px;
+}
+
+#refer .share-wrap .social-links a.blog{
+	border: 1px solid #af3717;
+	background: #ff7007;
+	height: 33px;
+	border-radius: 12px;
+	color: #ffffff;
+}
+
+#refer .laptop{
+	width: 530px;
+	height: 394px;
+	background: url(<%= asset_path('refer/laptop.png') %>) 0 0 no-repeat;
+	background-size: 100%;
+	overflow: hidden;
+	margin-top: 10px;
+	float: right;
+}
+
+#refer .prizes{
+	width: 100%;
+	padding-bottom: 40px;
+}
+
+#refer .prizes .page-content{
+	position: relative;
+}
+
+#refer .prizes .callout{
+	text-align: center;
+	font-size: 20px;
+	color: #009bdb;
+	font-weight: 600;
+	margin: 20px 0 0 0;
+	text-transform: uppercase;
+}
+
+
+#refer .prizes ul.products{
+	height: 150px;
+	width: 100%;
+	margin-top: 30px;
+	position: relative;
+	z-index: 1;
+}
+
+
+#refer .prizes .products li.title{
+	width: 200px;
+	margin-right: 70px;
+	height: 100%;
+	float: left;
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+#refer .prizes .products li.title .friends{
+	margin-top: 7px;
+	letter-spacing: 2px;
+}
+
+#refer .prizes .products li.title .friends{
+	margin-top: 18px;
+}
+
+#refer .prizes .products li.product{
+	height: 100%;
+	width: 160px;
+	margin-right: 125px;
+	float: left;
+	position: relative;
+}
+
+#refer .prizes .products li.product .circle{
+	height: 50px;
+	width: 50px;
+	margin: 0 auto;
+	border-radius: 30px;
+	background: #009bdb;
+	overflow: hidden;
+	text-align: center;
+	font-size: 22px;
+	font-weight: bolder;
+	line-height: 52px;
+	color: #ffffff;
+	text-shadow: -2px -2px 2px #0964b1, 2px -2px 2px #0964b1, -2px 2px 2px #0964b1, 2px 2px 2px #0964b1;
+}
+
+#refer .prizes .products li.product:hover .circle{
+	background: #0964b1;
+}
+
+#refer .prizes .products li.product .sep{
+	width: 12px;
+	height: 2px;
+	background: transparent;
+	margin: 18px auto;
+}
+
+#refer .prizes .products li.product p{
+	text-align: center;
+	font-weight: 500;
+}
+
+#refer .prizes .products li.product:last-child{
+	margin-right: 0;
+}
+
+#refer .prizes .products li.product.last{
+	margin-right: 0;
+}
+
+#refer .prizes .products li.product.selected .circle{
+	background: #ff7f02 !important;
+	text-shadow: none;
+}
+
+
+#refer .prizes .products li.product.selected p{
+	color: #ff7f02 !important;
+}
+
+#refer .prizes .products li.product:hover .circle{
+	color: #FFF;
+	background: #074E6F;
+	border-color: #074E6F;
+}
+
+#refer .prizes .products li.product .tooltip{
+	height: 262px;
+	width: 198px;
+	border: 4px solid #0964b1;
+	position: absolute;
+	top: -280px;
+	left: -20px;
+	display: none;
+	background: #FFF;
+}
+
+#refer .prizes .products li.product .tooltip img{
+	margin: 0 auto;
+	display: block;
+	height: 254px;
+	width: 190px;
+}
+
+#refer .prizes .products li.product:hover .tooltip{
+	display: block;
+}
+
+#refer .prizes .progress{
+	height: 8px;
+	width: 100%;
+	background: #a2a2a2;
+	position: absolute;
+	top: 153px;
+	z-index: 0;
+	border-radius: 3px;
+}
+
+#refer .prizes .progress .mover{
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#refer .prizes .progress .mover .bar{
+	background: #ff7f02;
+	width: 201px;
+	height: 8px;
+	border-radius: 3px;
+}
+
+#refer .prize-two .progress .mover .bar{ width: 352px; }
+#refer .prize-three .progress .mover .bar{ width: 637px; }
+#refer .prize-four .progress .mover .bar{ width: 1024px; }
+
+
+#refer .prizes p.place{
+	text-align: center;
+	font-size: 16px;
+	color: #009bdb;
+	width: 100%;
+	font-weight: 500;
+	margin-top: 30px;
+}
+
+
+#refer .prizes p.place span{
+	color: #ff7f02;
+}
+
+#refer .prizes p.check{
+	text-align: center;
+	font-size: 16px;
+	width: 100%;
+	font-weight: 500;
+	margin-top: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

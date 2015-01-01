@@ -1,6 +1,5 @@
 <div class="hero">
-    <p class="large brandon">Harry&#8217;s is live</p>
-    <p class="small brandon">Respecting the Face and Wallet<br>Since Like...Right Now.</p>
+    <p>Something Amazing Is Coming To Children&#96;s Language Learning!</p>
 </div>
 
 <div class="form-wrap clearfix <%= "ended" if Rails.application.config.ended %>">
@@ -11,10 +10,10 @@
         <p class="again brandon">Thank You Again!</p>
     <% else %>
         <div class="key"></div>
-        <p class="byline brandon">Be the first to know</p>
+        <p class="byline">Be the first to know!</p>
         <%= form_for @user, :url => { :action => "create" } do |f| %>
-            <%= f.text_field :email, :placeholder => "Enter Email", :class => "email brandon" %>
-            <input class="submit brandon" name="commit" type="submit" value="Step Inside" />
+            <%= f.text_field :email, :placeholder => "Enter e-mail", :class => "email" %>
+            <input class="submit" name="commit" type="submit" value="STEP INSIDE" />
         <% end %>
     <% end %>
 </div>

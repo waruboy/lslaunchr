@@ -19,17 +19,18 @@ class UsersController < ApplicationController
         # If user doesnt exist, make them, and attach referrer
         if @user.nil?
 
-            cur_ip = IpAddress.find_by_address(request.env['HTTP_X_FORWARDED_FOR'])
+            remote_ip = request.remote_ip
+            cur_ip = IpAddress.find_by_address(remote_ip)
 
             if !cur_ip
                 cur_ip = IpAddress.create(
-                    :address => request.env['HTTP_X_FORWARDED_FOR'],
+                    :address => remote_ip,
                     :count => 0
                 )
             end
 
             if cur_ip.count > 2
-                return redirect_to root_path
+                return redirect_to '/ip-error'
             else
                 cur_ip.count = cur_ip.count + 1
                 cur_ip.save
@@ -78,6 +79,10 @@ class UsersController < ApplicationController
                 format.html { redirect_to root_path, :alert => "Something went wrong!" }
             end
         end
+    end
+
+    def ip_error
+        @bodyId = 'ip_error'
     end
 
     def policy

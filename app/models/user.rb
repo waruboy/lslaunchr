@@ -1,3 +1,5 @@
+require 'mandrill'
+
 class User < ActiveRecord::Base
     belongs_to :referrer, :class_name => "User", :foreign_key => "referrer_id"
     has_many :referrals, :class_name => "User", :foreign_key => "referrer_id"
@@ -31,6 +33,21 @@ class User < ActiveRecord::Base
         },
     ]
 
+    def send_welcome_email
+        m = Mandrill::API.new
+        template_name = 'welcome'
+        template_content = []
+        message = {
+            global_merge_vars: [{
+                name: 'refcode',
+                content: referral_code
+            },],
+            to: [{ email: email }],
+        }
+        sending = m.messages.send_template template_name, template_content, message
+        puts sending
+    end
+
     def to_s
         email
     end
@@ -42,6 +59,11 @@ class User < ActiveRecord::Base
 
     private
 
+    def async_send_welcome_email
+        WelcomeMailWorker.perform_async(id)
+    end
+
+
     def create_referral_code
         referral_code = SecureRandom.hex(5)
         @collision = User.find_by_referral_code(referral_code)
@@ -52,10 +74,6 @@ class User < ActiveRecord::Base
         end
 
         self.referral_code = referral_code
-    end
-
-    def send_welcome_email
-        UserMailer.delay.signup_email(self)
     end
 
     def update_referrer!

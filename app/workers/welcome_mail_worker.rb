@@ -1,8 +1,8 @@
 class WelcomeMailWorker
-  include Sidekiq::worker 
+  include Sidekiq::Worker 
 
   def perform(id)
     user = User.find(id)
-    user.send_welcome_mail
+    user.send_welcome_email
   end
 end

@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
     ]
 
     def send_welcome_email
-        m = Mandrill::API.new
+        mandrill_key = ENV["mandrill_key"]
+        m = Mandrill::API.new mandrill_key
         template_name = 'welcome'
         template_content = []
         message = {
@@ -57,12 +58,14 @@ class User < ActiveRecord::Base
         self.save
     end
 
-    private
-
     def async_send_welcome_email
         WelcomeMailWorker.perform_async(id)
     end
 
+
+    private
+
+   
 
     def create_referral_code
         referral_code = SecureRandom.hex(5)

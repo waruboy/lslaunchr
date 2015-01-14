@@ -1,5 +1,5 @@
 <div class="header">
-    <div class="content">THANK YOU FOR SIGNING UP</div>
+    <div class="content">THANK YOU FOR SIGNING UP!</div>
 </div>
 
 <div class="hero">
@@ -45,14 +45,10 @@
                 <p class="rewards">BONUS GIFTS</p>
             </li>
             <% stops.each do |stop| %>
-                <li class="product <% if stop["selected"] %>selected<% end %> <% if stop["class"] == 'five' %>last<% end %>">
+                <li class="product <% if stop["selected"] %>selected<% end %> <% if stop["class"] == 'three' %>last<% end %>">
                     <div class="circle"><%= stop["count"] %></div>
                     <div class="sep"></div>
                     <p><%= stop["html"].html_safe %></p>
-
-                    <div class="tooltip">
-                        <img src="<%= stop["image"] %>" height="254">
-                    </div>
                 </li>
             <% end %>
         </ul>
@@ -74,7 +70,7 @@
         %>
 
         <% if referrals_count == 0 %>
-            <p class="place"><span>No</span> friends have signed up... Yet</p>
+            <p class="place"><span>No</span> friends have signed up... Yet!</p>
         <% else %>
             <p class="place"><span><%= referrals_count %></span> <%= words %> signed up</p>
         <% end %>

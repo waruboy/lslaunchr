@@ -36,13 +36,20 @@ class User < ActiveRecord::Base
     def send_welcome_email
         mandrill_key = ENV["mandrill_key"]
         m = Mandrill::API.new mandrill_key
-        template_name = 'welcome'
+        template_name = "welcome"
         template_content = []
         message = {
-            global_merge_vars: [{
+            global_merge_vars: [
+                {
                 name: 'refcode',
                 content: referral_code
-            },],
+                },
+                {
+                name: 'year',
+                content: Time.new.year.to_s
+                },
+            ],
+            tags: [ "welcome" ],
             to: [{ email: email }],
         }
         sending = m.messages.send_template template_name, template_content, message

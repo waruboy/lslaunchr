@@ -16,20 +16,20 @@ class User < ActiveRecord::Base
         {
             'count' => 5,
             "html" => "Early access to<br>Learn Safari<br>for your child",
-            "class" => "two",
-            "image" =>  ActionController::Base.helpers.asset_path("refer/tooltip1.png")
+            "class" => "one",
+            "image" =>  ""
         },
         {
             'count' => 10,
             "html" => "3 Months<br>Free Access",
-            "class" => "three",
-            "image" => ActionController::Base.helpers.asset_path("refer/tooltip2.png")
+            "class" => "two",
+            "image" => ""
         },
         {
             'count' => 25,
             "html" => "Lifetime<br>Free Access",
-            "class" => "four",
-            "image" => ActionController::Base.helpers.asset_path("refer/tooltip3.png")
+            "class" => "three",
+            "image" => ""
         },
     ]
 

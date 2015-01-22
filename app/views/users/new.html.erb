@@ -1,18 +1,17 @@
 <div class="hero">
-    <p>The funnest way to teach your kids Spanish!</p>
+    <p>COMING SOON: THE FUNNEST WAY FOR KIDS TO LEARN SPANISH!</p>
+    <%= image_tag "home/learnsafari_blue.png" %>
+
 </div>
 
 <div class="form-wrap clearfix <%= "ended" if Rails.application.config.ended %>">
     <% if Rails.application.config.ended %>
-        <p class="thanks brandon">THANK YOU FOR PARTICIPATING<br>IN OUR PRE-LAUNCH.</p>
-        <p class="compiling brandon">WE ARE COMPILING REWARDS RIGHT NOW AND WILL EMAIL<br/>COUPON CODES TO ALL RECIPIENTS IN THE NEXT DAY OR TWO</p>
-        <p class="go-to brandon">In the meantime, head to  <a href="http://www.harrys.com/">WWW.HARRYS.COM</a></p>
-        <p class="again brandon">Thank You Again!</p>
+
     <% else %>
         <div class="key"></div>
-        <p class="byline">Be the first to know!</p>
+        <p class="byline">BE THE FIRST TO KNOW!</p>
         <%= form_for @user, :url => { :action => "create" } do |f| %>
-            <%= f.text_field :email, :placeholder => "Enter e-mail", :class => "email" %>
+            <%= f.text_field :email, :placeholder => "ENTER E-MAIL", :class => "email" %>
             <input class="submit" name="commit" type="submit" value="STEP INSIDE" />
         <% end %>
     <% end %>

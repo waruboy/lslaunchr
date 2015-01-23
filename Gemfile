@@ -38,6 +38,7 @@ gem 'mina'
 
 gem 'sidekiq'
 gem 'mandrill-api'
+gem 'mandrill-rails'
 gem 'figaro'
 
 # To use ActiveModel has_secure_password

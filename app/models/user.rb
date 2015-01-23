@@ -69,6 +69,12 @@ class User < ActiveRecord::Base
         WelcomeMailWorker.perform_async(id)
     end
 
+    def self.delete_bounced(event_payload)
+        recipient_address = event_payload['msg']['email']
+        user = User.find_by_email(recipient_address)
+        user.destroy if user
+    end
+
 
     private
 

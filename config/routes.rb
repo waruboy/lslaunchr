@@ -14,6 +14,8 @@ Prelaunchr::Application.routes.draw do
 
   match 'ip-error' => 'users#ip_error'
 
+  resource :inbox, controller: "inbox", only: [:show, :create]
+
   unless Rails.application.config.consider_all_requests_local
       match '*not_found', to: 'users#redirect', :format => false
   end

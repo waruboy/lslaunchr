@@ -128,7 +128,7 @@ html.home{
 /* Refer a friend page */
 
 html.refer{
-	font-family: "Brandon Grotesque", "brandon-grotesque", "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+	font-family: "Open Sans", sans-serif;
 	background: url(<%= asset_path("refer/refer-bg.png") %>) repeat-x scroll 0 -275px #c0c0c0;
 	color: #444444;
 }
@@ -136,20 +136,30 @@ html.refer{
 #refer .header{
 	width: 100%;
 	min-width: 1024px;
-	text-align: center;
 	margin-bottom: 20px;
 }
 
 #refer .header .content{
 	background: #009bdb;
 	color: #ffffff;
+	text-align: center;
 	font-size: 24px;
+	font-weight: 700;
 	text-transform: uppercase;
-	padding: 7px 0;
+	padding: 12px 0;
 	border-radius: 0 0 25px 25px;
 	-webkit-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
 	   -moz-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
 	        box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+}
+
+#refer .header img{
+	height: 60px;
+	margin: -37px 0 0 30px;
+	border-radius: 50px;
+	-webkit-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	   -moz-box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
+	   			box-shadow: 0 7px 20px -4px rgb(15, 15, 15);
 }
 
 #refer .page-content{
@@ -162,7 +172,7 @@ html.refer{
 
 
 #refer .hero{
-	height: 391px;
+	height: 421px;
 	min-width: 1024px;
 	overflow: hidden;
 }
@@ -222,25 +232,26 @@ html.refer{
 #refer .share-wrap .social-links a.fb{
 	margin-right: 20px;
 	background: url(/assets/refer/fb.png);
-	background-size: 32px 32px;
-	width: 32px;
-	height: 32px;
+	background-size: 34px 34px;
+	width: 34px;
+	height: 34px;
 }
 
 #refer .share-wrap .social-links a.twit{
 	margin-right: 20px;
 	background: url(/assets/refer/twit.png);
-	background-size: 32px 32px;
-	width: 32px;
-	height: 32px;
+	background-size: 34px 34px;
+	width: 34px;
+	height: 34px;
 }
 
-#refer .share-wrap .social-links a.blog{
-	border: 1px solid #af3717;
-	background: #ff7007;
-	height: 33px;
-	border-radius: 12px;
-	color: #ffffff;
+#refer .share-wrap .social-links .sep{
+	height: 35px;
+	width: 1px;
+	background: #BAB9BA;
+	margin: 0px 20px 0px 0px;
+	display: inline-block;
+	line-height: 36px;
 }
 
 #refer .laptop{
@@ -291,11 +302,6 @@ html.refer{
 	font-size: 16px;
 	font-weight: bold;
 	text-align: center;
-}
-
-#refer .prizes .products li.title .friends{
-	margin-top: 7px;
-	letter-spacing: 2px;
 }
 
 #refer .prizes .products li.title .friends{

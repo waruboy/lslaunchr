@@ -1,19 +1,20 @@
 <div class="header">
     <div class="content">THANK YOU FOR SIGNING UP!</div>
+    <%= image_tag "learnsafari_blue.png" %>
 </div>
 
 <div class="hero">
     <div class="page-content clearfix">
         <div class="share-wrap">
-            <p class="why">Don't leave your friends behind</p>
+            <p class="why">DON'T LEAVE YOUR FRIENDS BEHIND</p>
             <p class="title">INVITE FRIENDS &<br>EARN BONUS GIFTS!</p>
             <p class="subtitle">Share your unique link via email, Facebook, or Twitter and earn bonus gifts for each friend who signs up.</p>
             <div class="unique-code"><%= root_url %>?ref=<%= @user.referral_code %></div>
-            <% twitter_message = "Something Amazing Is Coming To Children's Language Learning!. Excited for Learn Safari to launch." %>
+            <% twitter_message = "Coming Soon: The funnest way for kids to learn Spanish! Excited for @learnsafari to launch!" %>
             <div class="social-links">
                 <a href="http://twitter.com/share?url=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&text=<%= CGI::escape(twitter_message) %>" class="twit" target="_blank">&nbsp;</a>
+                <div class="sep">&nbsp;</div>
                 <a href="http://www.facebook.com/sharer/sharer.php?u=<%= CGI::escape(root_url) %>?ref=<%= CGI::escape(@user.referral_code) %>&title=Learn Safari" class="fb" target="_blank">&nbsp;</a>
-                <a class="blog" href="" target="_blank">OUR BLOG</a>
             </div>
         </div>
         <div class="laptop"></div>

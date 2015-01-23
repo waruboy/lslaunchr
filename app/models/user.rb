@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     REFERRAL_STEPS = [
         {
             'count' => 5,
-            "html" => "Early access to<br>Learn Safari<br>for your child",
+            "html" => "Early VIP access to<br>Spanish Safari<br>for your child",
             "class" => "one",
             "image" =>  ""
         },
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
         },
         {
             'count' => 25,
-            "html" => "Lifetime<br>Free Access",
+            "html" => "1 Year<br>Free Access",
             "class" => "three",
             "image" => ""
         },

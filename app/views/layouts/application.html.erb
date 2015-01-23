@@ -12,7 +12,7 @@
 
         <meta property="og:title" content="Children's Language Learning"/>
         <meta property="og:description" content="Something Amazing Is Coming To Children's Language Learning! Be the first to know!"/>
-        <meta property="og:image" content=""/>
+        <meta property="og:image" content="<%= asset_path("home/home-bg.jpg")%>"/>
         <meta property="og:url" content="<%= root_url %>"/>
         <% if @is_mobile %>
             <% if @bodyId == 'home' %>
@@ -22,6 +22,7 @@
             <% end %>
         <% end %>
         <%= stylesheet_link_tag "core.css", :media => "all" %>
+        <%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Open+Sans:400,700", media: "all" %>
         <%= csrf_meta_tags %>
 </head>
 <body id="<%= @bodyId %>">

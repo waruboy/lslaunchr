@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     validates :referral_code, :uniqueness => true
 
     before_create :create_referral_code
-    after_create :send_welcome_email, :update_referrer!
+    after_create :send_welcome_email, :update_referrer!, :notify_referrer
 
     REFERRAL_STEPS = [
         {
@@ -32,6 +32,39 @@ class User < ActiveRecord::Base
             "image" => ""
         },
     ]
+    REFERRAL_STEPS_COUNT = REFERRAL_STEPS.map { |s| s["count"] }
+
+    def notify_referrer
+        referrer = self.referrer
+        
+        if referrer
+            rcount = referrer.referrals.count
+            if REFERRAL_STEPS_COUNT.include? rcount or rcount == 1
+                mandrill_key = ENV["mandrill_key"]
+                m = Mandrill::API.new mandrill_key
+                template_name ="subscribe-#{rcount}"
+                template_content = []
+                message = 
+                {
+                    global_merge_vars:
+                    [
+                        {
+                            name: "refcode",
+                            content: referrer.referral_code
+                        },
+                        {
+                            name: "year",
+                            content: Time.new.year.to_s
+                        },
+                    ],
+                    tags: [ "subscribe-#{rcount}"],
+                    to: [{ email: referrer.email }],
+                }
+                sending = m.messages.send_template template_name, template_content, message
+                puts sending
+            end
+        end
+    end
 
     def send_welcome_email
         mandrill_key = ENV["mandrill_key"]

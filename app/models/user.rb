@@ -74,6 +74,30 @@ class User < ActiveRecord::Base
         end
     end
 
+    def send_reminder_email(days)
+        mandrill_key = ENV["mandrill_key"]
+        m = Mandrill::API.new mandrill_key
+        template_name = "#{days}-days"
+        template_content = []
+        message = {
+            global_merge_vars:
+            [
+                {
+                    name: "refcode",
+                    content: referral_code
+                },
+                {
+                    name: "year",
+                    content: Time.new.year.to_s
+                },
+            ],
+            tags: [ "reminder-day-#{days}" ],
+            to: [{ email: email }],
+        }
+        sending = m.messages.send_template template_name, template_content, message
+        puts sending
+    end
+
     def send_welcome_email
         mandrill_key = ENV["mandrill_key"]
         m = Mandrill::API.new mandrill_key

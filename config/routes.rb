@@ -1,3 +1,5 @@
+require "sidekiq/web"
+
 Prelaunchr::Application.routes.draw do
 
   ActiveAdmin.routes(self)
@@ -13,6 +15,8 @@ Prelaunchr::Application.routes.draw do
   match 'privacy-policy' => 'users#policy'
 
   match 'ip-error' => 'users#ip_error'
+
+  mount Sidekiq::Web, at: "/sidekiq0"
 
   resource :inbox, controller: "inbox", only: [:show, :create]
 

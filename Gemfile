@@ -37,6 +37,7 @@ gem 'unicorn'
 gem 'mina'
 
 gem 'sidekiq'
+gem 'sinatra', require: nil
 gem 'mandrill-api'
 gem 'mandrill-rails'
 gem 'figaro'

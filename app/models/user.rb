@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
     validates :referral_code, :uniqueness => true
 
     before_create :create_referral_code
-    after_create :send_welcome_email, :update_referrer!, :notify_referrer
+    after_create :async_send_welcome_email, :update_referrer!, :async_notify_referrer
 
     REFERRAL_STEPS = [
         {
@@ -33,6 +33,14 @@ class User < ActiveRecord::Base
         },
     ]
     REFERRAL_STEPS_COUNT = REFERRAL_STEPS.map { |s| s["count"] }
+
+    def async_notify_referrer
+        NotifyReferrerWorker.perform_in(30.seconds, id)
+    end
+
+    def async_send_welcome_email
+        WelcomeMailWorker.perform_in(30.seconds, id)
+    end
 
     def notify_referrer
         referrer = self.referrer
@@ -98,9 +106,7 @@ class User < ActiveRecord::Base
         self.save
     end
 
-    def async_send_welcome_email
-        WelcomeMailWorker.perform_async(id)
-    end
+
 
     def self.delete_bounced(event_payload)
         recipient_address = event_payload['msg']['email']

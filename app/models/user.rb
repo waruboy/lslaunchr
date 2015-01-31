@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
         NotifyReferrerWorker.perform_in(30.seconds, id)
     end
 
+    def async_send_reminder_email(days)
+        ReminderMailWorker.perform_async(id, days)
+    end
+
     def async_send_welcome_email
         WelcomeMailWorker.perform_in(30.seconds, id)
     end

@@ -3,6 +3,7 @@ require 'mandrill'
 class User < ActiveRecord::Base
     belongs_to :referrer, :class_name => "User", :foreign_key => "referrer_id"
     has_many :referrals, :class_name => "User", :foreign_key => "referrer_id"
+    has_one :reminder
     
     attr_accessible :email
 
@@ -10,7 +11,7 @@ class User < ActiveRecord::Base
     validates :referral_code, :uniqueness => true
 
     before_create :create_referral_code
-    after_create :async_send_welcome_email, :update_referrer!, :async_notify_referrer
+    after_create :create_reminder_record, :async_send_welcome_email, :update_referrer!, :async_notify_referrer
 
     REFERRAL_STEPS = [
         {
@@ -44,6 +45,12 @@ class User < ActiveRecord::Base
 
     def async_send_welcome_email
         WelcomeMailWorker.perform_in(30.seconds, id)
+    end
+
+    def create_reminder_record
+        r = Reminder.new
+        r.user = self
+        r.save
     end
 
     def notify_referrer
@@ -99,6 +106,10 @@ class User < ActiveRecord::Base
             to: [{ email: email }],
         }
         sending = m.messages.send_template template_name, template_content, message
+        reminder = self.reminder
+        reminder["day_#{days}_sent"] = true
+        reminder["day_#{days}_sent_at"] = Time.current
+        reminder.save
         puts sending
     end
 
@@ -134,12 +145,25 @@ class User < ActiveRecord::Base
         self.save
     end
 
-
-
     def self.delete_bounced(event_payload)
         recipient_address = event_payload['msg']['email']
         user = User.find_by_email(recipient_address)
         user.destroy if user
+    end
+
+    def self.send_reminder
+        days = [3, 10]
+        days.each do |day|
+            day_field = "day_#{day}_sent"
+            users = User.where(created_at: (Time.now - (day+2).days)..(Time.now - day.days))
+            users.each do |user|
+                unless user.reminder[day_field]
+                    user.async_send_reminder_email(day)
+                end
+            end
+
+        end
+        
     end
 
 
@@ -158,6 +182,8 @@ class User < ActiveRecord::Base
 
         self.referral_code = referral_code
     end
+
+
 
     def update_referrer!
         if referrer

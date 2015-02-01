@@ -50,6 +50,7 @@ GEM
     builder (3.0.4)
     celluloid (0.15.2)
       timers (~> 1.1.0)
+    chronic (0.10.2)
     coderay (1.1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -194,6 +195,8 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.1)
       rack (>= 1.0)
+    whenever (0.9.4)
+      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -215,3 +218,4 @@ DEPENDENCIES
   sqlite3
   uglifier (>= 1.0.3)
   unicorn
+  whenever

@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
             day_field = "day_#{day}_sent"
             users = User.where(created_at: (Time.now - (day+2).days)..(Time.now - day.days))
             users.each do |user|
-                unless user.reminder[day_field]
+                unless user.reminder[day_field] or !user.referrals.empty?
                     user.async_send_reminder_email(day)
                 end
             end

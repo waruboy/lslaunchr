@@ -39,6 +39,7 @@ gem 'mina'
 gem 'sidekiq'
 gem 'sinatra', require: nil
 gem "whenever"
+gem "sidetiq"
 
 gem 'mandrill-api'
 gem 'mandrill-rails'

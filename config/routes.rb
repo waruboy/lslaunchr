@@ -1,4 +1,5 @@
 require "sidekiq/web"
+require 'sidetiq/web'
 
 Prelaunchr::Application.routes.draw do
 
